@@ -66,7 +66,7 @@ export const config = {
     capabilities: [{
         browserName: 'chrome',
         'goog:chromeOptions': {
-            headlessArgs
+            args: headlessArgs
         },
     }],
 
