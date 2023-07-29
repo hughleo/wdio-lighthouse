@@ -1,0 +1,21 @@
+{
+  "name": "wdio-lighthouse",
+  "type": "module",
+  "devDependencies": {
+    "@wdio/allure-reporter": "^8.12.3",
+    "@wdio/cli": "^8.13.14",
+    "@wdio/local-runner": "^8.13.13",
+    "@wdio/mocha-framework": "^8.13.13",
+    "@wdio/spec-reporter": "^8.12.2",
+    "chromedriver": "^115.0.0",
+    "lighthouse": "^10.4.0",
+    "wdio-chromedriver-service": "^8.1.1"
+  },
+  "scripts": {
+    "wdio": "wdio run ./wdio.conf.js",
+    "navigation": "wdio run ./wdio.conf.js --spec test/specs/navigation.spec.js",
+    "auth-navigation": "wdio run ./wdio.conf.js --spec test/specs/auth-navigation.spec.js",
+    "auth": "wdio run ./wdio.conf.js --spec test/specs/auth.spec.js",
+    "timespan": "wdio run ./wdio.conf.js --spec test/specs/timespan.spec.js"
+  }
+}
