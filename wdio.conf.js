@@ -1,5 +1,16 @@
 import * as dns from 'node:dns'
 
+
+export const headlessArgs = [
+    'incognito',
+    '--start-maximized',
+    '--enable-automation',
+    '--disable-infobars',
+    '--window-size=1280,680',
+    '--no-sandbox',
+    '--headless=new',
+    '--disable-gpu'
+]
 export const config = {
     //
     // ====================
@@ -53,7 +64,10 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
+        browserName: 'chrome',
+        'goog:chromeOptions': {
+            headlessArgs
+        },
     }],
 
     //
