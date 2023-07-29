@@ -15,7 +15,7 @@ describe('My Login application', () => {
 
         const report = await flow.generateReport();
         fs.writeFileSync('flow-report.html', report);
-        await open('flow-report.html', {wait: true});
+        // await open('flow-report.html', {wait: true});
     })
 })
 
