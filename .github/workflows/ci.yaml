@@ -3,6 +3,8 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
         - name: Checkout
           uses: actions/checkout@v2
@@ -17,3 +19,9 @@ jobs:
           with:
             name: flow report
             path: flow-report.html
+        - uses: mshick/add-pr-comment@v2
+          with:
+            message: |
+              **Hello**
+              🌏
+              !    
