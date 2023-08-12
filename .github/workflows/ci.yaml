@@ -17,7 +17,3 @@ jobs:
           with:
             name: flow report
             path: flow-report.html
-        - uses: manrueda/lighthouse-report-action@v1.1.2
-          with:
-            reports: 'flow-report.html'
-            github-token: ${{ secrets.LIGHTHOUSE_TOKEN }}    
