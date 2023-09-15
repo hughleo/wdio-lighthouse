@@ -1,30 +1,27 @@
-import LoginPage from '../pageobjects/login.page.js'
-import SecurePage from '../pageobjects/secure.page.js'
 import fs from 'fs';
 import { startFlow } from 'lighthouse';
 import open from 'open';
 
-describe('My Login application', () => {
-    it('should login with valid credentials', async () => {
+describe('Lighthouse demo', () => {
+    it('should perform timespan audit', async () => {
         const puppeteerBrowser = await browser.getPuppeteer()
+
         const page = (await puppeteerBrowser.pages())[0];
+
         const flow = await startFlow(page);
+        await flow.navigate('https://qachallengeaccepted.com/', { name: 'Navigation only' });
 
-        await flow.startTimespan({ name: 'Login '})
-
-        await LoginPage.open()
-        await LoginPage.login('tomsmith', 'SuperSecretPassword!')
-
-        await expect(SecurePage.flashAlert).toHaveTextContaining(
-            'You logged into a secure area!')
+        await flow.startTimespan({ name: 'Timespan'})
+        await $('i.mobile-nav-toggle').click()
+        await $('=Roadmap').click()
+        await $('h2=Roadmap').waitForDisplayed()
 
         await flow.endTimespan()
-        
-        await flow.snapshot({ name: 'Logged in'})
 
         const report = await flow.generateReport();
+
         fs.writeFileSync('flow-report.html', report);
-        await open('flow-report.html', { wait: true });
+        await open('flow-report.html', {wait: true});
     })
 })
 
